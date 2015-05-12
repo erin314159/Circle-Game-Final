@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 public class Starter
 {
-    public static JFrame frame;
+    public static JFrame frame;//declare public static variable frame of class JFrame
     public static GameViewer viewer;
     public static int framewidth = 1000;
     public static int frameheight = 1000;
