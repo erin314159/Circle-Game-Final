@@ -55,5 +55,10 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.bluej
+*.ctxt
+*.txt
+
+
 # Windows shortcuts
 *.lnk
