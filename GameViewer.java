@@ -13,7 +13,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class GameViewer extends JComponent //draws all the components for the frame
 {
-    private ArrayList<Circle> circles = new ArrayList<Circle>();
+    private ArrayList<Circle> circles = new ArrayList<Circle>();//declaring and initializing an ArrayList of circles
     String s = "";
     String score = "";
     public GameViewer() 
