@@ -21,7 +21,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D.Double;
 
-public class Circle extends JComponent implements ActionListener//class Circle is a type of JComponent and implements the interface ActionListener
+public class Circle extends JComponent //class Circle is a type of JComponent 
 {
     //declare field variables 
     double posx;
@@ -145,11 +145,6 @@ public class Circle extends JComponent implements ActionListener//class Circle i
 
     }
 
-    public void actionPerformed(ActionEvent e)//overriding public mutator method actionPerformed from the ActionListener interface with parameter variable e of class ActionEvent
-    {
-       
-
-    }
 
     public Ellipse2D getObstacle()//method declaration for an accesor method returning an Ellipse2D
     {
