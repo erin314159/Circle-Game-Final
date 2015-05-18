@@ -60,7 +60,7 @@ public class Starter
                 viewer.repaint();//invoke paint on viewer
                 for(int i=1;i<viewer.getArrayList().size();i++)// for loop( declare and initialize i; i is less than the size of the viewer ArrayList; increment i by i)
                 {
-                    if(viewer.getArrayList().get(i).getObstacle().getX() > framewidth || viewer.getArrayList().get(i).getObstacle().getY() > frameheight) viewer.remove(viewer.getArrayList().get(i));//if an obstacle object in the v
+                    if(viewer.getArrayList().get(i).getObstacle().getX() > framewidth || viewer.getArrayList().get(i).getObstacle().getY() > frameheight) viewer.remove(viewer.getArrayList().get(i));//if a circle object in the viewer ArrayList is outside the frame then remove the circle from the ArrayList
 
                     if(mc.getCircle().intersects(viewer.getArrayList().get(i).getObstacle().getFrame())&& viewer.getArrayList().get(i).rad <= mc.w)
                     {
