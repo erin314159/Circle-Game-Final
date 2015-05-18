@@ -27,7 +27,7 @@ public class Starter
         count = 0;
         frame.add(viewer);//add viewer to the frame, mutator method add taking in viewer invoked on frame
         frame.setVisible(true);//mutator setVisible taking in boolean value true invoked on frame
-        class MainCircleListener implements MouseMotionListener, ActionListener// class implements interfaces MouseMotionLIstener and ActionListener
+        class MainCircleListener implements MouseMotionListener
         {
             //overriding methods declared in the interface
             public void mouseDragged(MouseEvent e){//method that allows touchscreen to work
@@ -42,10 +42,7 @@ public class Starter
 
             }
 
-            public void actionPerformed(ActionEvent e)//method signature of public mutator method actionPerformed with parameter variable e of class ActionEvent
-            {
-
-            }
+            
         }
 
         class Timerloop implements ActionListener//class implements interface ActionListener
@@ -62,40 +59,39 @@ public class Starter
                 {
                     if(viewer.getArrayList().get(i).getObstacle().getX() > framewidth || viewer.getArrayList().get(i).getObstacle().getY() > frameheight) viewer.remove(viewer.getArrayList().get(i));//if a circle object in the viewer ArrayList is outside the frame then remove the circle from the ArrayList
 
-                    if(mc.getCircle().intersects(viewer.getArrayList().get(i).getObstacle().getFrame())&& viewer.getArrayList().get(i).rad <= mc.w)
+                    if(mc.getCircle().intersects(viewer.getArrayList().get(i).getObstacle().getFrame())&& viewer.getArrayList().get(i).rad <= mc.w)//if statement to test intersection of maincircle and other circle, also checks if radius size of mc is greater than the other circle
                     {
 
-                        viewer.remove(viewer.getArrayList().get(i));
-                        count++;
-                        mc.enlarge();
-                        if (count%2 == 0)
+                        viewer.remove(viewer.getArrayList().get(i));//removes the element from the viewer arraylist 
+                        count++;//count increases by 1, counts the number of circles removed
+                        mc.enlarge();//increases width of the circle 
+                        if (count%1 == 0)//algorithm forr increases surrounding circles for every circle the main circle removes
                         {
-                            Circle.ransizegen = Circle.ransizegen + 1;
+                            Circle.ransizegen = Circle.ransizegen + 1;//increases ransizegen by 1 
                         }
                     }
-                    try{
-                        if(mc.getCircle().intersects(viewer.getArrayList().get(i).getObstacle().getFrame())&&viewer.getArrayList().get(i).rad > mc.w)
+                    try{//try catch statement to catch the index out of bounds expection and prevent crashing 
+                        if(mc.getCircle().intersects(viewer.getArrayList().get(i).getObstacle().getFrame())&&viewer.getArrayList().get(i).rad > mc.w)//if statement to test if the circle that mc intersects is greater than mc
                         {
-                            t2.stop(); 
-                            viewer.s= "GAME OVER";
+                            t2.stop(); //the game stops, so the timer for producing circles stops
+                            viewer.s= "GAME OVER";//sets the string value to game over so that it appears on the screen once the game ends
+ 
+                            viewer.score = "Score:" + Integer.toString(count);//same as above but displays score by converting the count into a string
 
-                            viewer.score = "Score:" + Integer.toString(count);
-
-                            viewer.remove(mc);
+                            viewer.remove(mc);//removes mc from viewer array list, no longer shown/useable 
                         }
                     }
                     catch(IndexOutOfBoundsException p){}
                 }
             }
         }
-        MainCircleListener listener = new MainCircleListener();
-        frame.addMouseMotionListener(listener);
-        Timer t = new Timer(100,listener);
-        t.start(); 
+        MainCircleListener listener = new MainCircleListener();//constructing new instance of maincirclelistener class
+        frame.addMouseMotionListener(listener);//adds listener to the frame
+         
 
-        Timerloop tl = new Timerloop();
-        t2 = new Timer(100, tl);
-        t2.start();
+        Timerloop tl = new Timerloop();//constructs new instance of TImerloop 
+        t2 = new Timer(100, tl);//initializising timer t2
+        t2.start();//starts timer 
 
     }
 }
